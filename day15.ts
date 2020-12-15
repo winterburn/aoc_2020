@@ -1,5 +1,7 @@
 
 let solve_part1 = (input:Array<number>, iterations:number) => {
+    // Modifying array in v8 is faster than modifying object.
+    // By a lot. If memory was object this would not finish on node.
     let memory = new Array(iterations);
     let counter = input.length;
     let last_number = input[input.length-1];
