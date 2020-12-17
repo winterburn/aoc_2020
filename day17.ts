@@ -2,11 +2,11 @@ import { Utility } from './utils';
 
 let active_cubes: Array<string> = [];
 let energy: { [key: string]: number} = {};
-let parse_input = (input:Array<string>) => {
+let parse_input = (input:Array<string>, extra_axis:number = 1) => {
     input.forEach((line, y) => {
         if (line === '') return;
         line.split('').forEach(( value, x ) => {
-            if (value === '#') active_cubes.push(`${x}_${y}_0_0`);
+            if (value === '#') active_cubes.push(`${x}_${y}`+'_0'.repeat(extra_axis));
         });
     });
 }
@@ -51,4 +51,4 @@ let solve = (part:number) => {
 
 let utils = new Utility();
 
-utils.getInput(17).then(res => {parse_input(res); solve(2)});
+utils.getInput(17).then(res => {parse_input(res, 2); solve(2)});
